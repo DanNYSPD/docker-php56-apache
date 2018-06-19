@@ -15,7 +15,7 @@ RUN set -x \
     && apt-get install -y zlib1g-dev \
     && apt-get install -y libicu-dev \
     && apt-get install -y libsasl2-dev \
-    && docker-php-ext-install bcmath bz2 calendar ctype curl json mbstring mysql mysqli mcrypt pdo_mysql xml soap zip \
+    && docker-php-ext-install bcmath bz2 calendar ctype curl gd json mbstring mysql mysqli mcrypt pdo_mysql xml soap zip \
     && echo "date.timezone = America/Sao_Paulo" > /usr/local/etc/php/conf.d/timezone.ini 
 
 FROM php:5.6.36-apache-jessie
