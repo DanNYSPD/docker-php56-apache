@@ -12,12 +12,19 @@ RUN set -x \
     && apt-get install -y zlib1g-dev \
     && apt-get install -y libicu-dev \
     && apt-get install -y libsasl2-dev \
-    && docker-php-ext-install bcmath calendar ctype json mbstring mysql mysqli mcrypt pdo_mysql xml soap zip \
-    && echo "date.timezone = America/Sao_Paulo" > /usr/local/etc/php/conf.d/timezone.ini \
+    && docker-php-ext-install bcmath calendar ctype curl json mbstring mysql mysqli mcrypt pdo_mysql xml soap zip \
+    && echo "date.timezone = America/Sao_Paulo" > /usr/local/etc/php/conf.d/timezone.ini 
+
+FROM php:5.6.36-apache-jessie
+
+RUN set -x \
+    && apt-get autoremove -y \
+    && apt-get autoclean -y \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/*
+
 # Enable apache mods.
 # RUN a2enmod php
 RUN a2enmod rewrite
-
-# Update the default apache site with the config we created.
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 RUN php -m
