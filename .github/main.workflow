@@ -1,9 +1,9 @@
 workflow "Build Image" {
   on = "push"
-  resolves = ["GitHub Action for Docker"]
+  resolves = ["Create image"]
 }
 
-action "GitHub Action for Docker" {
+action "Create image" {
   uses = "actions/docker/cli@c08a5fc9e0286844156fefff2c141072048141f6"
-  runs = "build -t henriquegomes6/php56-apache"
+  args = "docker build -t henriquegomes6/php56-apache"
 }
