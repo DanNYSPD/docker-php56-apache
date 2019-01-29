@@ -5,5 +5,5 @@ workflow "Build Image" {
 
 action "GitHub Action for Docker" {
   uses = "actions/docker/cli@c08a5fc9e0286844156fefff2c141072048141f6"
-  runs = "docker build -t henriquegomes6/php56-apache"
+  runs = "build -t henriquegomes6/php56-apache"
 }
